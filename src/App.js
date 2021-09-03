@@ -1,18 +1,19 @@
-import logo from "./logo.svg";
 import React from "react";
-import Navbar from "./components/NavBar";
-
 import "./App.scss";
+import Navbar from "./components/NavBar/NavBar";
+import Banner from "./components/Banner/Banner";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 
-function App() {
+const App = () => {
     return (
-        <div className="App">
-            <Navbar />
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-            </header>
-        </div>
+        <>
+            <div className="App">
+                <Navbar />
+                <Banner />
+                <ItemListContainer title="New Products" />
+            </div>
+        </>
     );
-}
+};
 
 export default App;

@@ -1,0 +1,25 @@
+@mixin button {
+    position: absolute;
+    height: 100%;
+    width: 6.75rem;
+    background-color: rgba(18, 18, 18, 0.1);
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(18, 18, 18, 0.2);
+    }
+}
+
+.BannerContainer {
+    height: 50vh;
+    width: 100%;
+    background: gray;
+    position: relative;
+    .Prev {
+        @include button;
+        left: 0;
+    }
+    .Next {
+        @include button;
+        right: 0;
+    }
+}
