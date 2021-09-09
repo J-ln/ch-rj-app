@@ -1,0 +1,19 @@
+.Dropdown {
+    position: absolute;
+    width: fit-content;
+    min-width: 10rem;
+    display: flex;
+    z-index: 1600;
+    flex-direction: column;
+    border: 1px solid hsl(0, 0, 90);
+    transform-origin: top left;
+    transition: all 0.5s;
+    transform: translateY(100%);
+    bottom: 0;
+    background: hsl(0, 0, 7);
+    .DropdownLinks {
+        color: white;
+        padding: 1rem;
+        cursor: pointer;
+    }
+}

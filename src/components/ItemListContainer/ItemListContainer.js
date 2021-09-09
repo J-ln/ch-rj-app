@@ -7,9 +7,9 @@ const ItemListContainer = (props) => {
         <div className="SectionItemContainer">
             <div className="ItemTitle">{props.title}</div>
             <div className="ItemCardsContainer">
-                <CardProduct name="Prueba" price="$7777" />
-                <CardProduct name="Prueba" price="$7777" />
-                <CardProduct name="Prueba" price="$7777" />
+                <CardProduct name="Prueba" price="$7777" stock={10} />
+                <CardProduct name="Prueba" price="$7777" stock={10} />
+                <CardProduct name="Prueba" price="$7777" stock={10} />
             </div>
         </div>
     );

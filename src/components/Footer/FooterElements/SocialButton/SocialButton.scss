@@ -1,0 +1,17 @@
+.SocialButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+    width: fit-content;
+    padding: 0.5rem;
+    &:hover {
+        background-color: hsla(0, 0%, 80%, 0.2);
+    }
+    .SocialIcon {
+        color: hsl(0, 0%, 80%);
+        width: 30px;
+        height: 30px;
+    }
+}
