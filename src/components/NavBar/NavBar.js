@@ -10,7 +10,7 @@ const Navbar = () => {
             <img className="Logo" src={logo} alt="" />
             <ul className="NavButtonList">
                 <NavButton text="Home" />
-                <NavButton text="Products" drop={true}></NavButton>
+                <NavButton text="Products" drop="true"></NavButton>
 
                 <NavButton text="Contact" />
             </ul>

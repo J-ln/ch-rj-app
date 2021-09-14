@@ -1,16 +1,12 @@
 import React from "react";
-import CardProduct from "../CardProduct/CardProduct";
+import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.scss";
 
-const ItemListContainer = (props) => {
+const ItemListContainer = ({ title }) => {
     return (
         <div className="SectionItemContainer">
-            <div className="ItemTitle">{props.title}</div>
-            <div className="ItemCardsContainer">
-                <CardProduct name="Prueba" price="$7777" stock={10} />
-                <CardProduct name="Prueba" price="$7777" stock={10} />
-                <CardProduct name="Prueba" price="$7777" stock={10} />
-            </div>
+            <div className="ItemTitle">{title}</div>
+            <ItemList />
         </div>
     );
 };

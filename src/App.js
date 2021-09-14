@@ -1,12 +1,12 @@
-import React from 'react'
-import './App.scss'
-import Navbar from './components/NavBar/NavBar'
-import Banner from './components/Banner/Banner'
-import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import Footer from './components/Footer/Footer'
+import React from "react";
+import "./App.scss";
+import Navbar from "./components/NavBar/NavBar";
+import Banner from "./components/Banner/Banner";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
-  return (
+    return (
         <>
             <div className="App">
                 <Navbar />
@@ -15,7 +15,7 @@ const App = () => {
                 <Footer />
             </div>
         </>
-  )
-}
+    );
+};
 
-export default App
+export default App;
