@@ -1,8 +1,12 @@
-import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
+import React, { useState, useEffect } from "react";
+
 import "./Item.scss";
 
-const Item = ({ title, price, stock, pictureUrl }) => {
+const Item = ({ id, title, price, pictureUrl, showItem }) => {
+    const [itemid, setId] = useState("");
+    useEffect(() => {
+        setId(id);
+    }, []);
     return (
         <li className="ItemContainer">
             <div className="ItemProductImage">
@@ -11,8 +15,12 @@ const Item = ({ title, price, stock, pictureUrl }) => {
             <div className="ItemProductInfo">
                 <h2 className="ItemProductName">{title}</h2>
                 <div className="ItemProductPrice">{price}</div>
+                <button
+                    className="ItemProductOpenBtn"
+                    onClick={() => showItem(itemid)}>
+                    Open Details
+                </button>
             </div>
-            <ItemCount stock={stock} />
         </li>
     );
 };
