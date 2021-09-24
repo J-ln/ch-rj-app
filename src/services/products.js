@@ -8,8 +8,36 @@
 //     }
 // }
 export const products = [
-    { id: "1", title: "Prueba", price: "7777", pictureUrl: "", stock: 50 },
-    { id: "2", title: "Prueba2", price: "7577", pictureUrl: "", stock: 30 },
-    { id: "3", title: "Prueba3", price: "7757", pictureUrl: "", stock: 45 },
-    { id: "4", title: "Prueba4", price: "7775", pictureUrl: "", stock: 25 },
+    {
+        id: "1",
+        title: "Prueba",
+        category: "shorts",
+        price: "7777",
+        pictureUrl: "",
+        stock: 50,
+    },
+    {
+        id: "2",
+        title: "Prueba2",
+        category: "shorts",
+        price: "7577",
+        pictureUrl: "",
+        stock: 30,
+    },
+    {
+        id: "3",
+        title: "Prueba3",
+        category: "shirts",
+        price: "7757",
+        pictureUrl: "",
+        stock: 45,
+    },
+    {
+        id: "4",
+        title: "Prueba4",
+        category: "shirts",
+        price: "7775",
+        pictureUrl: "",
+        stock: 25,
+    },
 ];

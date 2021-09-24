@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 import "./Item.scss";
 
-const Item = ({ id, title, price, pictureUrl, showItem }) => {
-    const [itemid, setId] = useState("");
-    useEffect(() => {
-        setId(id);
-    }, []);
+const Item = ({ id, title, price, pictureUrl }) => {
     return (
         <li className="ItemContainer">
             <div className="ItemProductImage">
@@ -15,11 +12,9 @@ const Item = ({ id, title, price, pictureUrl, showItem }) => {
             <div className="ItemProductInfo">
                 <h2 className="ItemProductName">{title}</h2>
                 <div className="ItemProductPrice">{price}</div>
-                <button
-                    className="ItemProductOpenBtn"
-                    onClick={() => showItem(itemid)}>
-                    Open Details
-                </button>
+                <Link key={id} to={`/item/${id}`}>
+                    <button className="ItemProductOpenBtn">Open Details</button>
+                </Link>
             </div>
         </li>
     );

@@ -3,13 +3,19 @@ import "./NavBar.scss";
 import logo from "./Logo.svg";
 import NavButton from "./NavElements/NavButton";
 import CartWidget from "./NavElements/CartWidget";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
         <nav className="NavBar">
-            <img className="Logo" src={logo} alt="" />
+            <NavLink to={"/"}>
+                <img className="Logo" src={logo} alt="" />
+            </NavLink>
             <ul className="NavButtonList">
-                <NavButton text="Home" />
+                <NavLink to={"/"}>
+                    <NavButton text="Home" />
+                </NavLink>
+
                 <NavButton text="Products" drop="true"></NavButton>
 
                 <NavButton text="Contact" />

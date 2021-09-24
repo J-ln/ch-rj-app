@@ -1,22 +1,35 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.scss";
 import Navbar from "./components/NavBar/NavBar";
-import Banner from "./components/Banner/Banner";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-
+import Home from "./views/Home";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Footer from "./components/Footer/Footer";
+
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 
 const App = () => {
     return (
-        <>
-            <div className="App">
+        <div className="App">
+            <BrowserRouter>
                 <Navbar />
-                <Banner />
-                <ItemListContainer title="New Products" />
-
+                <Switch>
+                    <Route path="/category/:id">
+                        <ItemListContainer />
+                    </Route>
+                    <Route path="/category">
+                        <ItemListContainer />
+                    </Route>
+                    <Route path="/item/:id">
+                        <ItemDetailContainer />
+                    </Route>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                </Switch>
                 <Footer />
-            </div>
-        </>
+            </BrowserRouter>
+        </div>
     );
 };
 

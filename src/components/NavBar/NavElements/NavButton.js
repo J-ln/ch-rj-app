@@ -13,10 +13,10 @@ const NavButton = ({ text, drop }) => {
                 setOpen(!openDrop);
             }}
             drop={drop}>
-            <a className="NavLink">
+            <div className="NavLink">
                 {text}
                 {drop ? <ExpandMoreIcon className="NavLinkIcon" /> : ""}
-            </a>
+            </div>
             {drop && openDrop ? <Dropdown /> : ""}
         </li>
     );
