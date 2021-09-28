@@ -3,19 +3,19 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddShoppingCartSharpIcon from "@material-ui/icons/AddShoppingCartSharp";
 import "./ItemCount.scss";
-const ItemCount = ({ stock }) => {
-    let [items = 0, setItems] = useState();
+const ItemCount = ({ stock, addToCart }) => {
+    let [items, setItems] = useState(0);
 
-    const IncItem = () => {
+    function IncItem() {
         if (items < stock) {
             setItems((items += 1));
         }
-    };
-    const DecItem = () => {
+    }
+    function DecItem() {
         if (items > 0) {
             setItems((items -= 1));
         }
-    };
+    }
     return (
         <div className="ItemCountContainer">
             <div className="ItemCount">
@@ -25,7 +25,11 @@ const ItemCount = ({ stock }) => {
                     {items}
                     <AddIcon onClick={IncItem} className="ItemInc" />
                 </div>
-                <button className="AddToCartBtn">
+                <button
+                    onClick={() => {
+                        addToCart(items);
+                    }}
+                    className="AddToCartBtn">
                     <AddShoppingCartSharpIcon />
                 </button>
             </div>
