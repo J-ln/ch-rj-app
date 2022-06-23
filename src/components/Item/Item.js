@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 
 import "./Item.scss";
 
+function openDetail() {
+
+}
+
 const Item = ({ id, title, price, pictureUrl }) => {
     return (
         <li className="ItemContainer">
