@@ -4,9 +4,15 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { products } from "../../services/products";
 import { useParams } from "react-router";
 
-function getProducts() {
+function getItem(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => resolve(products), 2000);
+        products.then((result) => {
+            const item = result.find((product) => product.id === id);
+            return item
+        })
+
+
     });
 }
 
@@ -15,11 +21,7 @@ const ItemDetailContainer = () => {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
-        const products = getProducts();
-        products.then((result) => {
-            const item = result.find((product) => product.id === id);
-            setItem(item);
-        });
+        setItem(getItem(id));
     }, [id]);
     return (
         <div className="SectionDetailContainer">
