@@ -5,23 +5,25 @@ import { products } from "../../services/products";
 import { useParams } from "react-router";
 
 function getItem(id) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(products), 2000);
-        products.then((result) => {
-            const item = result.find((product) => product.id === id);
-            return item
-        })
+    return new Promise((resolve) => {
+        const item = products.find((product) => product.id === id);
+        setTimeout(() => resolve(item), 2000)
+    })
+};
 
 
-    });
-}
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
     const [item, setItem] = useState([]);
 
     useEffect(() => {
-        setItem(getItem(id));
+        const itemRequest = getItem(id)
+        itemRequest.then(result => {
+            const item = result
+            setItem(item)
+        })
+            ;
     }, [id]);
     return (
         <div className="SectionDetailContainer">

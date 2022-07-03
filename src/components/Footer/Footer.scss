@@ -5,13 +5,15 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    border-top: 0.1rem solid hsl(0, 0, 90);
+    border-top: 0.1rem solid hsl(0deg, 0%, 90%);
+
     .FooterContainer {
         width: calc(100% - 13.5rem);
         height: 80%;
         padding: 0 6.75rem;
-        border-top: 0.1rem solid hsl(0, 0, 90);
+        border-top: 0.1rem solid hsl(1deg, 1%, 90%);
     }
+
     .SocialList {
         position: absolute;
         right: 0;

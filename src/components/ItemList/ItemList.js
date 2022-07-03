@@ -12,7 +12,6 @@ function getProducts() {
 
 const ItemList = () => {
     const { id } = useParams();
-    console.log(useParams(id));
     const [itemsList, setItems] = useState([]);
 
     useEffect(() => {

@@ -1,0 +1,28 @@
+.CartContainer {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    background-color: hsl(0deg, 1%, 7%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+
+    .CartTitle {
+        color: hsl(0deg, 0%, 90%);
+        font-size: 3.5rem;
+        font-style: italic;
+        font-weight: 600;
+    }
+
+    .CartPrice {
+        color: hsl(0deg, 0%, 90%);
+        font-size: 2rem;
+        font-style: italic;
+        font-weight: 600;
+        text-align: center;
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 1rem;
+    }
+}
