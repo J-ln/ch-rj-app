@@ -14,7 +14,6 @@ const App = () => {
         <div className="App">
             <CartContextProvider>
                 <BrowserRouter>
-
                     <Navbar />
                     <Switch>
                         <Route path="/category/:id">
@@ -34,7 +33,6 @@ const App = () => {
                         </Route>
                     </Switch>
                     <Footer />
-
                 </BrowserRouter>
             </CartContextProvider>
         </div>

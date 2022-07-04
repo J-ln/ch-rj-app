@@ -1,33 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.scss";
 import { Link } from "react-router-dom";
+import CartContext from "../../context/CartContext";
+import { CartContextProvider } from "../../context/CartContext";
 
-const ItemDetail = ({ title, price, stock, pictureUrl }) => {
-    const [toBuy, setToBuy] = useState(0);
+const ItemDetail = ({ id, title, price, pictureUrl, stock }) => {
+    const [toBuy, setToBuy] = useState(false);
+    const { products, addProducts } = useContext(CartContext);
 
-    function addToCart(toAdd) {
-        setToBuy(toAdd);
-        console.log(toBuy);
+    function addToCart(quantity) {
+        const pushProduct = {
+            id: id,
+            title: title,
+            price: price,
+            quantity: quantity,
+            picture: pictureUrl,
+            stock: stock
+        }
+        console.log(pushProduct)
+        addProducts(pushProduct);
+        setToBuy(!toBuy)
+        console.log(products)
     }
     return (
-        <div className="ItemContainer">
-            <div className="ItemProductImage">
-                {<img src={pictureUrl} alt={title} />}
+        <CartContextProvider>
+            <div className="ItemContainer">
+                <div className="ItemProductImage">
+                    {<img src={pictureUrl} alt={title} />}
+                </div>
+                <div className="ItemProductInfo">
+                    <h2 className="ItemProductName">{title}</h2>
+                    <div className="ItemProductPrice">{price}</div>
+                    {toBuy && (
+                        <button className="CartButton">
+                            <Link className="CartLink" to="/cart">
+                                Go to Cart
+                            </Link>
+                        </button>
+                    )}
+                </div>
+                {!toBuy && <ItemCount stock={stock} addToCart={addToCart} />}
             </div>
-            <div className="ItemProductInfo">
-                <h2 className="ItemProductName">{title}</h2>
-                <div className="ItemProductPrice">{price}</div>
-                {toBuy !== 0 && (
-                    <button className="CartButton">
-                        <Link className="CartLink" to="/cart">
-                            Go to Cart
-                        </Link>
-                    </button>
-                )}
-            </div>
-            {toBuy === 0 && <ItemCount stock={stock} addToCart={addToCart} />}
-        </div>
+        </CartContextProvider>
     );
 };
 

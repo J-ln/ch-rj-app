@@ -13,7 +13,7 @@
     .CartItemImage {
         background-color: white;
         height: 100%;
-        width: 20%;
+        width: calc(10rem - 1.6rem);
         border-radius: 5px;
     }
 
@@ -37,16 +37,15 @@
             justify-content: space-between;
             align-items: center;
             font-size: 1.2rem;
-            border: 1px solid white;
             border-radius: 5px;
-            width: 60%;
-            height: 2rem;
+            width: 7rem;
+            height: 1.8rem;
 
             .QuantityDec,
             .QuantityInc {
                 cursor: pointer;
                 background-color: hsla(0deg, 0%, 100%, 0.2);
-                width: 4rem;
+                width: 33%;
                 height: 100%;
 
                 &:active {
