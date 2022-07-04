@@ -15,6 +15,7 @@ const CartContainer = () => {
     return (
         <CartContextProvider>
             <div className='CartContainer'>
+                <button className='CartClearButton'>Clear</button>
                 <div className='CartTitle'>Your Cart</div>
                 {/* {itemList.map(item => (
                     <CartItem
@@ -26,7 +27,8 @@ const CartContainer = () => {
                         quantity={item.quantity} />
                 ))} */}
                 <CartItem />
-                <div className='CartPrice'>Total: $777</div>
+                <div className='CartPriceContainer'>Sub Total <div className='CartPriceAmount'>$777</div></div>
+                <button className='CartBuyButton'>Check Out</button>
             </div>
         </CartContextProvider>
     )
