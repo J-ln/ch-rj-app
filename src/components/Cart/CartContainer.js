@@ -1,36 +1,42 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import "./CartContainer.scss";
 import CartItem from '../CartItem/CartItem';
 import CartContext from '../../context/CartContext';
 
 
 const CartContainer = () => {
-    const [itemList, setItemList] = useState([])
-    const { products, getProducts } = useContext(CartContext)
+    let [productList, setProdutcs] = useState([])
+    const [subTotal, setSbTotal] = useState(0)
+    const { products, getProducts, clearProducts, calcTotal } = useContext(CartContext)
+
+
 
     useEffect(() => {
-        const productsInCart = getProducts()
-        console.log(productsInCart)
-        setItemList(productsInCart)
-    }, [products])
+        let productsInCart = getProducts()
+        setProdutcs(productsInCart)
+        const total = calcTotal();
+        setSbTotal(total)
+
+    }, [CartItem])
 
     return (
         <div className='CartContainer'>
-            <button className='CartClearButton'>Clear</button>
+            <button className='CartClearButton' onClick={clearProducts}>Clear</button>
             <div className='CartTitle'>Your Cart</div>
-            {!products.length == 0 &&
+            {!products.length &&
                 <div className='CartEmptyText'>No produtcs added</div>}
-            {products.length && (itemList.map(item => (
+            {productList.map(item => (
                 <CartItem
                     key={item.id}
                     title={item.title}
-                    price={item.price}
-                    pictureUrl={item.pictureUrl}
                     quantity={item.quantity}
-                    stock={item.stock} />
-
-            )))}
-            <div className='CartPriceContainer'>Sub Total <div className='CartPriceAmount'>$777</div></div>
+                    pictureUrl={item.pictureUrl}
+                    price={item.price}
+                    id={item.id}
+                    stock={item.stock}
+                />
+            ))}
+            <div className='CartPriceContainer'>Sub Total <div className='CartPriceAmount'>${subTotal}</div></div>
             <button className='CartBuyButton'>Check Out</button>
         </div>
     )

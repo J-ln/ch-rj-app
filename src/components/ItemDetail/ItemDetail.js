@@ -7,7 +7,7 @@ import { CartContextProvider } from "../../context/CartContext";
 
 const ItemDetail = ({ id, title, price, pictureUrl, stock }) => {
     const [toBuy, setToBuy] = useState(false);
-    const { products, addProducts } = useContext(CartContext);
+    const { addProducts } = useContext(CartContext);
 
     function addToCart(quantity) {
         const pushProduct = {
@@ -18,10 +18,8 @@ const ItemDetail = ({ id, title, price, pictureUrl, stock }) => {
             picture: pictureUrl,
             stock: stock
         }
-        console.log(pushProduct)
         addProducts(pushProduct);
         setToBuy(!toBuy)
-        console.log(products)
     }
     return (
         <CartContextProvider>
