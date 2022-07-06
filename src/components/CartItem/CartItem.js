@@ -33,15 +33,16 @@ const CartItem = (item) => {
 
     return (
         <div className='CartItemContainer'>
-            <DeleteIcon onClick={() => removeProduct(item.id)} className="CartDeleteButton" />
+
             <div className='CartItemImage'>
                 <img src={item.pictureUrl} alt={item.title} />
             </div>
             <div className='CartItemInfo'>
-                <div className='CartItemName'>{item.title}</div>
+                <h3 className='CartItemName'>{item.title}</h3>
+                <DeleteIcon onClick={() => removeProduct(item.id)} className="CartDeleteButton" />
                 <div className="CartItemQuantity">
                     <RemoveIcon onClick={() => decQuantityCta(item.id)} className="QuantityDec" />
-                    {quantity}
+                    {item.quantity}
                     <AddIcon onClick={() => incQuantityCta(item.id)} className="QuantityInc" />
                 </div>
                 <div className='CartItemPrice'>${item.price}</div>

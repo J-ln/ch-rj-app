@@ -5,19 +5,14 @@ import CartContext from '../../context/CartContext';
 
 
 const CartContainer = () => {
-    let [productList, setProdutcs] = useState([])
-    const [subTotal, setSbTotal] = useState(0)
-    const { products, getProducts, clearProducts, calcTotal } = useContext(CartContext)
+    const { products, clearProducts, total, calcTotal } = useContext(CartContext)
 
 
 
     useEffect(() => {
-        let productsInCart = getProducts()
-        setProdutcs(productsInCart)
-        const total = calcTotal();
-        setSbTotal(total)
+        calcTotal()
 
-    }, [CartItem])
+    }, [products, total])
 
     return (
         <div className='CartContainer'>
@@ -25,7 +20,7 @@ const CartContainer = () => {
             <div className='CartTitle'>Your Cart</div>
             {!products.length &&
                 <div className='CartEmptyText'>No produtcs added</div>}
-            {productList.map(item => (
+            {products.map(item => (
                 <CartItem
                     key={item.id}
                     title={item.title}
@@ -36,7 +31,7 @@ const CartContainer = () => {
                     stock={item.stock}
                 />
             ))}
-            <div className='CartPriceContainer'>Sub Total <div className='CartPriceAmount'>${subTotal}</div></div>
+            <div className='CartPriceContainer'>Sub Total <div className='CartPriceAmount'>${total}</div></div>
             <button className='CartBuyButton'>Check Out</button>
         </div>
     )

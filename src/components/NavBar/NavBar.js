@@ -23,7 +23,7 @@ const Navbar = () => {
 
             <div className="NavUserArea">
                 <div className="NavSing">Sing Up</div>
-                <NavLink to={"/cart"}><CartWidget count="0" /></NavLink>
+                <NavLink to={"/cart"}><CartWidget /></NavLink>
 
             </div>
         </nav>

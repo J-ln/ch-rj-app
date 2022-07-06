@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import './CartWidget.scss'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
+import CartContext from '../../../context/CartContext'
 
-const CartWidget = (props) => {
+const CartWidget = () => {
+  const { quantity, products } = useContext(CartContext);
+
+  useEffect(() => {
+
+
+  }, [quantity, products])
+
+
   return (
-        <div className="CartWidget">
-            <ShoppingCartIcon className="Icon" />
-            <span className="Counter">{props.count}</span>
-        </div>
+    <div className="CartWidget">
+      <ShoppingCartIcon className="Icon" />
+      <span className="Counter">{quantity}</span>
+    </div>
   )
 }
 
