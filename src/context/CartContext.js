@@ -4,27 +4,32 @@ const CartContext = React.createContext();
 
 export const CartContextProvider = ({ children }) => {
     const [products, setProdutcs] = useState([])
+    const [total, setTotal] = useState(0);
+    const [quantity, setQuantity] = useState(0);
 
     const addProducts = (pushProduct) => {
-        console.log(isInCart(pushProduct))
-        isInCart(pushProduct) ?
-            addQuantity(pushProduct.id, pushProduct.quantity)
-            :
+
+        if (isInCart(pushProduct)) {
+            addQuantity(pushProduct.id, pushProduct.quantity);
+        }
+        else {
             setProdutcs([...products, pushProduct])
-        console.log(products)
+            refreshCart();
+
+        }
     }
 
     const removeProduct = (id) => {
         const newProducts = products.filter(product => product.id !== id)
         setProdutcs(newProducts)
-    }
 
-    const getProducts = () => {
-        return products
+        refreshCart();
+
     }
 
     const clearProducts = () => {
         setProdutcs([])
+        refreshCart()
     }
 
     const isInCart = (pushProduct) => {
@@ -41,6 +46,7 @@ export const CartContextProvider = ({ children }) => {
         if (products[i].quantity > products[i].stock) {
             products[i].quantity = products[i].stock
         }
+        refreshCart();
     }
 
     const decQuantity = (id) => {
@@ -62,13 +68,24 @@ export const CartContextProvider = ({ children }) => {
     const calcTotal = () => {
         let subTotal = 0;
         for (let i = 0; i < products.length; i++) {
-            let sum = (products[i].price * products[i].quantity)
-            subTotal += sum
+            let add = (products[i].price * products[i].quantity)
+            subTotal += add
         }
-        return subTotal
+        setTotal(subTotal);
     }
     const refreshCart = () => {
-        setProdutcs(products)
+        calcQuantity()
+        calcTotal()
+        console.log(total, quantity)
+    }
+
+    const calcQuantity = () => {
+        let totalElements = 0;
+        for (let i = 0; i < products.length; i++) {
+            let elems = products[i].quantity;
+            totalElements += elems;
+        }
+        setQuantity(totalElements);
     }
 
 
@@ -78,11 +95,13 @@ export const CartContextProvider = ({ children }) => {
                 products,
                 addProducts,
                 removeProduct,
-                getProducts,
                 clearProducts,
                 incQuantity,
                 decQuantity,
-                calcTotal
+                total,
+                quantity,
+                calcTotal,
+                calcQuantity
             }}
         >
             {children}
