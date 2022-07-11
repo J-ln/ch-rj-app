@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
 import Item from "../Item/Item";
 import "./ItemList.scss";
-import { products } from "../../services/products";
 import { useParams } from "react-router";
+import { getAllProducts, getProductsCategory } from "../../services/firebase/firebase";
 
-function getProducts() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(products), 2000);
-    });
-}
 
 const ItemList = () => {
     const { id } = useParams();
     const [itemsList, setItems] = useState([]);
 
     useEffect(() => {
-        console.log(id);
         setItems([]);
-        const products = getProducts();
+
         if (id) {
-            products.then((result) => {
-                const filter = result.filter(
-                    (product) => product.category === id
-                );
-                setItems(filter);
-            });
+            let products = getProductsCategory("items", id)
+                .then(() => {
+                    console.log(products)
+                    setItems(products);
+                }).catch((err) => {
+                    console.log(err)
+                });
         } else {
-            products.then((result) => {
-                setItems(result);
-            });
+            let products = getAllProducts("items")
+                .then(() => {
+                    console.log(products)
+                    setItems(products);
+                }).catch((err) => {
+                    console.log(err)
+                });
         }
     }, [id]);
 

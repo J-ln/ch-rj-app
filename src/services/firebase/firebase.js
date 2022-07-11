@@ -15,7 +15,7 @@ const app = firebase.initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export async function getAllProducts = (collect) => {
+export const getAllProducts = (collect) => {
     const products = []
     getDocs(collection(db, collect))
         .then((querySnapshot) => {
