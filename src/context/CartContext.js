@@ -76,7 +76,6 @@ export const CartContextProvider = ({ children }) => {
     const refreshCart = () => {
         calcQuantity()
         calcTotal()
-        console.log(total, quantity)
     }
 
     const calcQuantity = () => {

@@ -5,14 +5,17 @@
     padding: 0.5rem;
     cursor: pointer;
     transition: background-color 0.2s ease-in;
+
     &:hover {
         background-color: hsla(0, 0%, 80%, 0.2);
     }
+
     .Icon {
         color: hsl(0, 0%, 80%);
         width: 30px;
         height: 30px;
     }
+
     .Counter {
         text-align: center;
         align-content: center;

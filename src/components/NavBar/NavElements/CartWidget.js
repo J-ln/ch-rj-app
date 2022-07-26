@@ -4,10 +4,10 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
 import CartContext from '../../../context/CartContext'
 
 const CartWidget = () => {
-  const { quantity, products } = useContext(CartContext);
+  const { quantity, products, calcQuantity } = useContext(CartContext);
 
   useEffect(() => {
-
+    calcQuantity()
 
   }, [quantity, products])
 

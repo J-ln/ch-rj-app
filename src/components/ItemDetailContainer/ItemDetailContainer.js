@@ -3,6 +3,7 @@ import "./ItemDetailContainer.scss";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { products } from "../../services/products";
 import { useParams } from "react-router";
+import { getProductById } from "../../services/firebase/firebase";
 
 function getItem(id) {
     return new Promise((resolve) => {
@@ -18,11 +19,11 @@ const ItemDetailContainer = () => {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
-        const itemRequest = getItem(id)
-        itemRequest.then(result => {
-            const item = result
-            setItem(item)
-        })
+        getProductById("items", id)
+            .then(result => {
+                const item = result
+                setItem(item)
+            })
             ;
     }, [id]);
     return (

@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./NavBar.scss";
 import logo from "./Logo.svg";
 import NavButton from "./NavElements/NavButton";
 import CartWidget from "./NavElements/CartWidget";
 import { NavLink } from "react-router-dom";
+import CartContext from "../../context/CartContext";
 
 const Navbar = () => {
+    const { products } = useContext(CartContext);
+    useEffect(() => {
+
+    }, [products])
+
     return (
         <nav className="NavBar">
             <NavLink to={"/"}>
@@ -23,7 +29,7 @@ const Navbar = () => {
 
             <div className="NavUserArea">
                 <div className="NavSing">Sing Up</div>
-                <NavLink to={"/cart"}><CartWidget /></NavLink>
+                {products.length && <NavLink className="NavCartLink" to={"/cart"}><CartWidget /></NavLink>}
 
             </div>
         </nav>

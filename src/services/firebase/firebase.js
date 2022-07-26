@@ -1,5 +1,5 @@
 import * as firebase from "firebase/app"
-import { getFirestore, collection, getDocs, getDoc, query, where } from "firebase/firestore"
+import { getFirestore, collection, getDocs, getDoc, query, where, doc } from "firebase/firestore"
 
 const firebaseConfig = {
     apiKey: "AIzaSyC9MKYpHF1oeLqaLQd9gLMNpmcMcDGbu1M",
@@ -15,36 +15,26 @@ const app = firebase.initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export const getAllProducts = (collect) => {
-    const products = []
-    getDocs(collection(db, collect))
-        .then((querySnapshot) => {
-            querySnapshot.docs.map(doc => {
-                products.push({ id: doc.id, ...doc.data() })
-            })
-        })
-        .then(() => {
-            console.log(products)
-            return products
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    console.log(products)
+export const getAllProducts = async (collect) => {
+    let querySnapshot = await getDocs(collection(db, collect))
+    let products = [];
+    querySnapshot.docs.map(doc => {
+        products.push({ id: doc.id, ...doc.data() })
+    })
+    return products;
 }
 
-export const getProductsCategory = (collect, category) => {
-    const products = []
-    getDoc(query(collection(db, collect), where("category", "==", category)))
-        .then((querySnapshot) => {
-            querySnapshot.docs.map(doc => {
-                return { id: doc.id, ...doc.data() }
-            })
-        })
-        .then(() => {
-            return products
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+export const getProductsCategory = async (collect, category) => {
+    let querySnapshot = await getDocs(query(collection(db, collect), where("category", "==", category)))
+    let products = [];
+    querySnapshot.docs.map(doc => {
+        products.push({ id: doc.id, ...doc.data() })
+    })
+    return products;
+}
+
+export const getProductById = async (collect, id) => {
+    let productRef = await getDoc(doc(db, collect, id))
+    let product = { id: id, ...productRef.data() }
+    return product
 }

@@ -11,20 +11,19 @@ const ItemList = () => {
 
     useEffect(() => {
         setItems([]);
-
         if (id) {
-            let products = getProductsCategory("items", id)
-                .then(() => {
-                    console.log(products)
-                    setItems(products);
+            getProductsCategory("items", id)
+                .then((result) => {
+                    let products = result
+                    setItems(products)
                 }).catch((err) => {
                     console.log(err)
                 });
         } else {
-            let products = getAllProducts("items")
-                .then(() => {
-                    console.log(products)
-                    setItems(products);
+            getAllProducts("items")
+                .then((result) => {
+                    let products = result
+                    setItems(products)
                 }).catch((err) => {
                     console.log(err)
                 });
